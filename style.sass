@@ -1,42 +1,76 @@
-body 
-    width: 100vw
-    height: 100vh
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&family=Raleway:ital,wght@1,200&display=swap')
+    
+$whiteColour: #E8EBF7
+$blackColour: #110B11
+$blueColour: #1B4079
+    
+@mixin place($w, $h)
+    width: $w
+    height: $h
+
+@mixin colors($bc, $c)
+    background-color: $bc
+    color: $c
+
+@mixin space($m, $p)
+    margin: $m
+    padding: $p
+
+
+body
+    @include space(0, 0)
+    @include colors($whiteColour, $whiteColour)
+    @include place(100vw, 100vh)
     box-sizing: border-box
     overflow: hidden
     text-align: center
-    padding: 100px
-    margin: 0
-    background-color: white
-
-.container 
-    border: 5px solid orange
-    border-radius: 10px
     display: grid
     place-content: center
-    height: 200px
-    padding: 100px
-    background-color: #252525
 
-.list 
-    padding: 0
     
-.list a
-    list-style-type: none
-    color: #252525
-    text-decoration: none
-    display: block
-    background-color: lightblue
-    line-height: 2
-    margin: 10px
-    padding: 0 
-    border: 2px solid white
-    border-radius: 10px
+
+.container 
+    @include colors($blackColour, $whiteColour)
+    @include place(40vw, 35vh)
+    border: 5px solid $blueColour
+    border-radius: 15px
+    padding: 3.25rem
+
+    @media screen and (max-width: 430px)
+        @include place(40vw, 42vh)
     
+        
+
+.header
+    @include space(0, 0)
+    font-family: 'Quintessential', cursive
+
+.par
+    margin: 0.8rem
+    font-family: 'Raleway', sans-serif
+
+.box
+    display: flex
+    justify-content: space-around
+    flex-direction: column
+    align-items: center
+
+.darkButton, .lightButton, .toggleButton
+    @include space(0.5rem 0, 0.5rem)
+    @include place(50%, 50%)
+    @include colors($blackColour, $whiteColour)
+    border: 3px solid $blueColour
+    border-radius: 15px
+    cursor: pointer
+    font-family: 'Raleway', sans-serif
+
+    @media screen and (max-width: 430px)
+        @include place(30vw, 5vh)
+
 
 .dark 
-    background-color: #252525
-    color: white
-    
+    @include colors($blackColour, $whiteColour)
+
+        
 .light
-    background-color: white
-    color: #252525
+    @include colors($whiteColour, $whiteColour)
